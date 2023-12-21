@@ -1,0 +1,84 @@
+body {
+  font-family: Arial;
+  height: 100%;
+}
+* {
+  font-family: Arial;
+}
+
+html {
+  height: 100%;
+}
+
+.hei {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.out {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter {
+  display: block;
+  text-align: center;
+  width: 85px;
+  height: 85px;
+  border-radius: 14px;
+  position: relative;
+  margin: 0;
+  font-size: 80px;
+  background: rgb(86, 62, 124);
+  color: white;
+}
+
+.line1 {
+  position: relative;
+  font-size: 35px;
+}
+
+.tbt {
+  position: relative;
+  height: 30px;
+  font-size: 18px;
+  width: 320px;
+  border: 0.5px solid;
+  border-color: rgb(206, 212, 218);
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.txt1 {
+  position: relative;
+  font-weight: 550;
+}
+
+.txt2 {
+  position: relative;
+  color: rgb(108, 117, 125);
+  font-size: 14px;
+  font-weight: 20;
+}
+.btn1 {
+  color: white;
+  position: relative;
+  height: 50px;
+  width: 330px;
+  border: 0.5px solid;
+  border-radius: 4px;
+  font-size: 18px;
+  background-color: rgb(0, 123, 255);
+  padding: 10px;
+}
+
+.btn1:hover {
+  background-color: rgba(0, 123, 255, 0.55);
+}
+
+input:hover {
+  box-shadow: 0px 0px 8px rgb(127, 189, 255);
+}
