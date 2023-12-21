@@ -1,2 +1,2 @@
 # Project
-Sample Projects &lt;br> by Priyanshu Das
+Sample Projects <br> by Priyanshu Das
