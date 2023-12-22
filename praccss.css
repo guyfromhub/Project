@@ -1,0 +1,84 @@
+body {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  height: 100%;
+}
+
+nav li {
+  font-size: 20px;
+  color: white;
+  font-family: Arial;
+  display: inline;
+  margin-left: 15px;
+}
+
+.nav1 {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: rgb(52, 58, 64);
+  padding: 20px 20px 12px 0px;
+  height: 30px;
+  margin: 0px;
+}
+
+nav ol {
+  padding: 0px;
+  margin: 0px;
+}
+
+.li1 {
+  color: white;
+}
+
+.li2 {
+  color: rgb(243, 244, 244);
+}
+
+.li3,
+.li5,
+.opt1 {
+  background-color: rgb(52, 58, 64);
+  color: rgb(152, 155, 159);
+}
+
+.li4 {
+  color: rgb(96, 100, 105);
+}
+
+.opt1 {
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  width: 113px;
+}
+
+.find {
+  box-sizing: border-box;
+  height: 45px;
+  width: 220px;
+  border-radius: 6px;
+  margin-bottom: -20px;
+  padding: 0px 4px 0px 10px;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.btn {
+  color: rgb(41, 162, 70);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(41, 162, 70);
+  background-color: rgb(52, 58, 64);
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.div1 {
+  margin-left: auto;
+  margin-top: -15px;
+}
