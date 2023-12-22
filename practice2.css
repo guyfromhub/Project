@@ -1,0 +1,100 @@
+* {
+  font-family: Arial;
+}
+body {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  height: 100%;
+}
+
+ol li {
+  font-size: 20px;
+  font-family: Arial;
+  padding-top: 20px;
+  display: inline;
+  margin-right: 15px;
+}
+
+.head1 {
+  padding: 20px;
+  font-size: 26px;
+}
+
+.nav1 {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  box-shadow: 0px -2px 12px rgb(204, 205, 206);
+  display: flex;
+  height: 7%;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.lst1 {
+  margin-left: auto;
+}
+
+.btn1 {
+  font-size: 20px;
+  background-color: white;
+  height: 50px;
+  width: 100px;
+  margin-right: 20px;
+  color: rgb(44, 100, 255);
+  border-radius: 5px;
+  border-color: rgb(44, 153, 255);
+}
+
+.main1 {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.main2 {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.head2 {
+  font-family: arial;
+  font-weight: 200;
+  font-size: 56px;
+  margin: 10px auto;
+}
+
+.para1 {
+  text-align: center;
+  margin: 10px auto;
+  width: 45%;
+  font-size: 22px;
+  font-weight: lighter;
+}
+
+.boxes {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: yellow;
+  width: 60%;
+}
+
+.main2 {
+  background-color: aqua;
+}
+
+.main1 {
+  background-color: green;
+}
