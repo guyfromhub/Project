@@ -1,3 +1,6 @@
+* {
+  font-family: Arial;
+}
 body {
   height: 100%;
   padding: 0px;
@@ -81,4 +84,31 @@ nav ol {
 .div1 {
   margin-left: auto;
   margin-top: -15px;
+}
+
+.sec1 {
+  background-color: rgb(233, 236, 239);
+  height: 40%;
+  display: flex;
+  width: 100%;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.head1 {
+  margin: 0px;
+  font-weight: 200;
+  font-size: 60px;
+}
+
+.para1 {
+  width: 105%;
+}
+
+.main1 {
+  display: flex;
+  flex-flow: column;
+  margin-right: 0 auto;
+  max-width: 990px;
 }
