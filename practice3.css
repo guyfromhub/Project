@@ -1,0 +1,39 @@
+.parent  {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  background-color: rgb(199, 16, 16);
+  height: 200px;
+   text-align: center;
+  width: 100%;
+  color: white;
+}
+
+.box1{
+    padding: 40px;
+}
+
+.box1:hover {
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background:rgb(196, 132, 132);
+  transition: background-color 0.3s;
+  width: 5%;
+  height:10%;
+}
+ 
+.parent:hover {
+  background-color: rgb(160, 0, 0);
+  height: 200px;
+  width: 100%;
+}
+
+/*
+.box1:hover {
+  background-color: white;
+}
+
+.box1:active {
+  background-color: yellow;
+}
