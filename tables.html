@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="tables.css">
+</head>
+
+<body>
+    <div class="con1">
+        <input type="text" name="" id="num1" class="txt1">
+        <button class="btn" onclick="display1()">Generate</button>
+        <pre class="para1" id="dis"></pre>
+    </div>
+<script>
+    function display1()
+    {
+        var a = document.getElementById("num1").value;
+        var b=0;
+        let c='';
+        
+        for ( b = 1; b <=10; b++) {
+            c+=(`${a}x${b}=${a * b } \n`);  
+            document.getElementById("dis").textContent= c;
+        }
+        
+    }
+
+</script>
+</body>
+</html>
