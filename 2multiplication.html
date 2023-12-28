@@ -46,7 +46,7 @@ function mul1(){
     <br>
     <br>
     <input type="button" value="Multiply" class="btn" id="" onclick="mul1()">
-    <input type="button" value="Divide" class="btn">
+    <input type="button" value="Divide" class="btn" onclick="div1() ">
 <p id="answer"></p>
 
     <script>
@@ -54,6 +54,13 @@ function mul1(){
             var a = document.getElementById("num1").value;
             var b = document.getElementById("num2").value;
             var c = Number(a)*Number(b);
+            document.getElementById("answer").textContent=c;
+        }
+
+        function div1(){
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+            var c = Number(a)/Number(b);
             document.getElementById("answer").textContent=c;
         }
     </script>
