@@ -1,0 +1,62 @@
+<!-- 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="practice5.css">
+</head>
+<body >
+    <div class="box">
+    <p class="para1">1st Number:</p><input type="text" id="num1" class="tbt1">
+    <br>
+    <p class="para1">2nd Number:</p> <input type="text" id="num2" class="tbt1">
+    <button class="btn" onclick="mul1()">Multiply</button>
+    <button class="btn">Divide</button>
+    <p> The result Is:</p>
+    <p id="ans" > </p>
+    </div>
+
+<script>
+function mul1(){
+    let a = document.getElementById("num1").value;
+    let b = document.getElementById("num2").value;
+    let c= Number(a)*Number(b);
+    document.getElementById("ans").textContent=c;
+}
+</script>
+</body>
+</html>
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="practice5.css">
+</head>
+<body>
+    <label for=""> 1st Number</label> <input type="text" name="" id="num1">
+    <br>
+    <br>
+    <label for=""> 2nd Number</label> <input type="text" name="" id="num2">
+    <br>
+    <br>
+    <input type="button" value="Multiply" class="btn" id="" onclick="mul1()">
+    <input type="button" value="Divide" class="btn">
+<p id="answer"></p>
+
+    <script>
+        function mul1() {
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+            var c = Number(a)*Number(b);
+            document.getElementById("answer").textContent=c;
+        }
+    </script>
+</body>
+
+</html>
