@@ -1,0 +1,43 @@
+body{
+    background:rgb(18, 42, 43);
+}
+
+.main1{
+    margin:200px auto;
+    display:flex;
+    width:700px;
+    height:200px;
+    justify-content:space-evenly;
+    align-items:center;
+}
+
+.acol{
+    border:2px solid white;
+    width:130px;
+    height:180px;
+    box-shadow:0px 0px 20px rgba(38, 112, 115, 0.7);
+}
+
+.acol:hover{
+    box-shadow:0px 0px 20px rgba(67, 214, 219, 0.7);
+}
+
+.col1{
+    background:white;
+}
+
+.col2{
+    background:blue;
+}
+
+.col3{
+    background:yellow;
+}
+
+.col4{
+    background:green;
+}
+
+.col5{
+    background:red;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="color.css" />
+  </head>
+  <body>
+    <div class="main1">
+      <div class="col1 acol" id="color1" onmouseover="wcol1()" onmouseleave="org()"></div>
+      <div class="col2 acol" id="color2" onmouseover="wcol2()" onmouseleave="org()"></div>
+      <div class="col3 acol" id="color3" onmouseover="wcol3()" onmouseleave="org()"></div>
+      <div class="col4 acol" id="color4" onmouseover="wcol4()" onmouseleave="org()"></div>
+      <div class="col5 acol" id="color5" onmouseover="wcol5()" onmouseleave="org()"></div>
+    </div>
+    <script>
+        // document.getElementById("color1").addEventListener('mouseenter',()=>{
+        //             document.body.style.backgroundColor = "white";
+        // })
+        function wcol1(){
+             document.body.style.backgroundColor = "white";
+         }
+        
+        function wcol2(){
+            document.body.style.backgroundColor = "blue";
+        }
+
+        function wcol3(){
+            document.body.style.backgroundColor = "yellow";
+        }
+
+        function wcol4(){
+            document.body.style.backgroundColor = "green";
+        }
+
+        function wcol5(){
+            document.body.style.backgroundColor = "red";
+        }
+        function org(){
+            document.body.style.backgroundColor = "rgb(18, 42, 43)";
+        }
+
+    </script>
+  </body>
+</html>
