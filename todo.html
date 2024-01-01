@@ -1,31 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="todo.css">
-</head>
+    <link rel="stylesheet" href="todo.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
 
-<body>
+  <body>
     <h1 class="head1">Todo list using JavaScript</h1>
     <div class="con1">
-        <div class="inn1">
-            <input type="text" name="" class="inp1" id="txt1" value="" placeholder="'Type Your To-Do Here'">
-            <input type="button" value="Add" class="btn1" onclick="myFunc1()">
-        </div>
-        <div class="inn2" id="">
-            <ul class="" id="para1"></ul>
-            </ul>
-        </div>
+      <div class="inn1">
+        <input
+          type="text"
+          name=""
+          class="inp1"
+          id="txt1"
+          value=""
+          placeholder="'Type Your To-Do Here'"
+        />
+        <input type="button" value="Add" class="btn1" onclick="myFunc1()" />
+      </div>
+
+      <div class="inn2" id="">
+        <ul class="" id="para1"></ul>
+      </div>
     </div>
     <script>
-        function myFunc1() {
-            let val = document.getElementById("txt1").value;
-            let list1 = document.createElement("li");
-            document.getElementById("para1").appendChild(list1).textContent = val;
-        }
+      var a = 0;
+
+      function myFunc1() {
+        var text = document.getElementById("txt1").value;
+        var list1 = document.createElement("li");
+        var btn = document.createElement("button");
+        btn.className += "material-symbols-outlined";
+        btn.id += "delbtn" +a;
+        btn.innerHTML = "delete";
+        btn.onclick = function() {
+          myDelete(list1.id,btn.id);
+        };
+        // btn.addEventListener("click", myDelete());
+        // btn.onclick = myDelete();
+        // btn.addEventListener('onclick',myDelete());
+        list1.textContent = text;
+        list1.id += "listid" + a;
+        document.getElementById("para1").appendChild(list1);
+        document.getElementById("para1").appendChild(btn);
+        a++;
+      }
+
+      function myDelete(id,id) {
+        var elementToRemove = document.getElementById(id);
+        elementToRemove.parentNode.removeChild(elementToRemove);
+      }
+
     </script>
-</body>
+  </body>
 </html>
