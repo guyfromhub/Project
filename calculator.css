@@ -1,0 +1,52 @@
+body {
+  height: 100%;
+  width: 99%;
+}
+
+.head1 {
+  margin: 1px;
+  font-weight: 200px;
+}
+
+.mainframe {
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  background: AQUA;
+  border: 1px solid black;
+}
+
+.btnfrm {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 380px;
+  background: rgba(67, 168, 155, 0.57);
+}
+
+.dis1,
+.dis2 {
+  width: 90%;
+  height: 10%;
+  margin: auto;
+  text-align: right;
+  font-size: 32px;
+  padding: 6px;
+}
+
+.dis2 {
+  margin-bottom: 3px;
+}
+
+.numkey {
+  font-size: 72px;
+  text-align: center;
+  width: 30%;
+  height: 20%;
+  margin: 2px;
+  background: white;
+}

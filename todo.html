@@ -35,29 +35,38 @@
 
       function myFunc1() {
         var text = document.getElementById("txt1").value;
-        var list1 = document.createElement("li");
+        var list = document.createElement("li");
         var btn = document.createElement("button");
         btn.className += "material-symbols-outlined";
-        btn.id += "delbtn" +a;
+        btn.id += "delbtn" + a;
         btn.innerHTML = "delete";
-        btn.onclick = function() {
-          myDelete(list1.id,btn.id);
-        };
         // btn.addEventListener("click", myDelete());
         // btn.onclick = myDelete();
         // btn.addEventListener('onclick',myDelete());
-        list1.textContent = text;
-        list1.id += "listid" + a;
-        document.getElementById("para1").appendChild(list1);
+        list.textContent = text;
+        list.id += "listid" + a;
+        document.getElementById("para1").appendChild(list);
         document.getElementById("para1").appendChild(btn);
         a++;
+        btn.onclick = function () {
+          myDelete(list.id, btn.id);
+        };
       }
 
-      function myDelete(id,id) {
-        var elementToRemove = document.getElementById(id);
-        elementToRemove.parentNode.removeChild(elementToRemove);
+      function myDelete(listId, btnId) {
+        console.table(listId, btnId);
+        var listToRemove = document.getElementById(listId);
+        var btnToRemove = document.getElementById(btnId);
+        listToRemove.parentNode.removeChild(listToRemove);
+        btnToRemove.parentNode.removeChild(btnToRemove);
       }
-
+      // function myDelete() {
+      //   console.log(id);
+      //   var elementToRemove = document.getElementById(id);
+      //   var nodeToRemove = elementToRemove.parentNode;
+      //   nodeToRemove.removeChild(elementToRemove);
+      //   elementToRemove.parentNode.removeChild(elementToRemove);
+      // }
     </script>
   </body>
 </html>

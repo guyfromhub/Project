@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css" />
+  </head>
+  <body>
+    <div class="mainframe">
+      <h3 class="head1">Simple Calculator in JavaScript</h3>
+      <!-- Working Display -->
+      <input type="text" id="operationdisplay" class="dis1" disabled />
+      <!-- Answer Display -->
+      <input type="text" id="answerdisplay" class="dis2" disabled />
+      <div class="btnfrm">
+        <!-- Buttons -->
+        <div class="numkey">1</div>
+        <div class="numkey">2</div>
+        <div class="numkey">3</div>
+        <div class="numkey">4</div>
+        <div class="numkey">5</div>
+        <div class="numkey">6</div>
+        <div class="numkey">7</div>
+        <div class="numkey">8</div>
+        <div class="numkey">9</div>
+        <div class="numkey">+</div>
+        <div class="numkey">0</div>
+        <div class="numkey">-</div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("click", function (event) {
+        var elementId = event.target.id;
+        var varval = event.target.textContent;
+        var currenttxtval = document.getElementById("operationdisplay").value;
+        var pvarval = currenttxtval.substring(currenttxtval.length - 1);
+        console.log("Click event target:", event.target);
+        console.log("Click Value:", varval);
+        console.log("Previous Textbox Value:", pvarval);
+        if (pvarval === "+" || "-") {
+          console.log("Same");
+        }
+
+        // console.log("You clicked on element with id: "+ elementId);
+        document.getElementById("operationdisplay").value += varval;
+      });
+    </script>
+  </body>
+</html>
