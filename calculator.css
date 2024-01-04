@@ -14,7 +14,7 @@ body {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  width: 30%;
   background: AQUA;
   border: 1px solid black;
 }
@@ -24,7 +24,7 @@ body {
   justify-content: space-evenly;
   flex-flow: row wrap;
   width: 100%;
-  height: 380px;
+
   background: rgba(67, 168, 155, 0.57);
 }
 
@@ -43,10 +43,10 @@ body {
 }
 
 .numkey {
-  font-size: 72px;
+  font-size: 64px;
   text-align: center;
-  width: 30%;
-  height: 20%;
+  width: 20%;
+  height: 70px;
   margin: 2px;
   background: white;
 }

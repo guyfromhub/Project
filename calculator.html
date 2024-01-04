@@ -27,24 +27,68 @@
         <div class="numkey">+</div>
         <div class="numkey">0</div>
         <div class="numkey">-</div>
+        <div class="numkey">*</div>
+        <div class="numkey">/</div>
+        <div class="numkey">=</div>
+        <div class="numkey">C</div>
       </div>
     </div>
     <script>
       document.addEventListener("click", function (event) {
         var elementId = event.target.id;
         var varval = event.target.textContent;
-        var currenttxtval = document.getElementById("operationdisplay").value;
+        var currenttxtval = document.getElementById("answerdisplay").value;
+        var result = 0;
+
+        console.log("target:", event.target, "Click Value:", varval);
+        if (!isNaN(parseInt(varval)) || varval === ".") {
+          document.getElementById("operationdisplay").value += varval;
+        } else if (varval === "+" || varval === "-" || varval === "/") {
+          document.getElementById("operationdisplay").value += varval;
+        } else if (varval === "=") {
+          var expression = document.getElementById("operationdisplay").value;
+          try {
+            result = eval(expression);
+            document.getElementById("answerdisplay").value = result;
+          } catch (error) {
+            document.getElementById("answerdisplay").value = "Error";
+          }
+        } else if (varval === "C") {
+          document.getElementById("operationdisplay").value = "";
+          document.getElementById("answerdisplay").value = "";
+        }
+      });
+    </script>
+    <!-- <script>
+      document.addEventListener("click", function (event) {
+        var elementId = event.target.id;
+        var varval = event.target.textContent;
+        var currenttxtval = document.getElementById("answerdisplay").value;
         var pvarval = currenttxtval.substring(currenttxtval.length - 1);
+        var result = 0;
         console.log("Click event target:", event.target);
         console.log("Click Value:", varval);
         console.log("Previous Textbox Value:", pvarval);
-        if (pvarval === "+" || "-") {
-          console.log("Same");
+        // if (pvarval == varval) {
+        if (varval == "+" || varval == "-" || varval == "*" || varval == "/") {
+          switch (varval) {
+            case "+":
+              result += currenttxtval;
+              document.getElementById("operationdisplay").value += "+";
+              break;
+
+            default:
+              break;
+          }
+        } else {
+          document.getElementById("operationdisplay").value += varval;
         }
 
+        // }
         // console.log("You clicked on element with id: "+ elementId);
+        document.getElementById("answerdisplay").value += result;
         document.getElementById("operationdisplay").value += varval;
       });
-    </script>
+    </script> -->
   </body>
 </html>
