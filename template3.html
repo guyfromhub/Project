@@ -1,15 +1,35 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,1,200"
+    />
   </head>
   <body>
-    <nav class="flex w-full px-6 py-5 shadow-md">
+    <nav
+      class="flex w-full px-6 py-3 shadow-md max-md:w-full border border-red-600 border-solid max-md:mx-auto"
+    >
       <h1 class="text-xl">Company Name</h1>
-      <ul class="ml-auto list-none">
+      <span class="flex ml-auto invisible">
+        <input
+          type="button"
+          value="Menu"
+          onclick="toggleList()"
+          class="hidden max-md:visible ml-auto material-symbols-outlined relative"
+          id="listbtn"
+        />
+        <ul id="myList" class="bg-gray-700 list-none h-1 max-md:hidden">
+          <li class="bg-slate-200">Features</li>
+          <li class="bg-slate-200">Enterprise</li>
+          <li class="bg-slate-200">Support</li>
+          <li class="bg-slate-200">Pricing</li>
+        </ul>
+      </span>
+      <ul class="ml-auto list-none max-md:invisible">
         <li class="navlist2">Features</li>
         <li class="navlist2">Enterprise</li>
         <li class="navlist2">Support</li>
@@ -23,35 +43,144 @@
         </li>
       </ul>
     </nav>
-    <div class="w-1/2 mx-auto">
+    <div class="w-1/2 mx-auto max-md:w-full max-md:p-5">
       <div class="flex flex-col my-12 items-center">
-        <h1 class="text-5xl">Pricing</h1>
+        <h1 class="text-5xl max-md:mx-auto">Pricing</h1>
         <p class="w-[70%] text-center mb-6">
           Quickly build an effective pricing table for your potential customers
           with this Bootstrap example. It's built with default Bootstrap
           components and utilities with little customization.
         </p>
-        <div class="flex justify-between space-x-6">
-          <div class="w-1/3 border border-solid border-gray-400">
-            <h1 class="w-full text-center bg-neutral-100 py-2 px-1 text-xl">
+        <div
+          class="flex justify-between space-x-6 max-md:flex-col max-md:w-full max-md:p-4 max-md:gap-y-2"
+        >
+          <div
+            class="w-1/3 border border-solid border-gray-400 text-center pb-2 shadow-lg max-md:w-full"
+          >
+            <h1
+              class="w-full md:w-52 text-center bg-neutral-100 py-2 px-1 text-xl border-b border-solid border-gray-400"
+            >
               Free
             </h1>
-            <p></p>
+            <ul class="list-none space-y-1 mb-2">
+              <li class="px-5 text-xl my-3">
+                <h1 class="inline text-3xl font-semibold">$15</h1>
+                / mo
+              </li>
+              <li class="text-sm">20 user included</li>
+              <li class="text-sm">10 GB of storage</li>
+              <li class="text-sm">Priority email Support</li>
+              <li class="text-sm">Help center access</li>
+            </ul>
+            <input
+              type="button"
+              class="text-blue-500 my-3 w-[92%] mx-1 hover:text-blue-800 rounded-md border px-2 py-1 hover:border-blue-500 border-blue-500"
+              value="Sign up for free"
+            />
           </div>
-          <div class="w-1/3 border border-solid border-gray-400">
-            <h1 class="w-full text-center bg-neutral-100 py-2 px-1 text-xl">
+          <div
+            class="w-1/3 border border-solid border-gray-400 text-center pb-2 shadow-lg max-md:w-full"
+          >
+            <h1
+              class="w-full md:w-52 text-center bg-neutral-100 py-2 px-1 text-xl border-b border-solid border-gray-400"
+            >
               Pro
             </h1>
-            <p></p>
+            <ul class="list-none space-y-1 mb-2">
+              <li class="px-5 text-xl my-3">
+                <h1 class="inline text-3xl font-semibold">$15</h1>
+                / mo
+              </li>
+              <li class="text-sm">20 user included</li>
+              <li class="text-sm">10 GB of storage</li>
+              <li class="text-sm">Priority email Support</li>
+              <li class="text-sm">Help center access</li>
+            </ul>
+            <input
+              type="button"
+              class="text-white my-3 w-[92%] mx-1 rounded-md border px-2 py-1 bg-blue-500 hover:bg-blue-800"
+              value="Get started"
+            />
           </div>
-          <div class="w-1/3 border border-solid border-gray-400">
-            <h1 class="w-full text-center bg-neutral-100 py-2 px-1 text-xl">
+          <div
+            class="w-1/3 border border-solid border-gray-400 text-center pb-2 shadow-lg max-md:w-full"
+          >
+            <h1
+              class="w-full md:w-52 text-center bg-neutral-100 py-2 px-1 text-xl border-b border-solid border-gray-400"
+            >
               Enterprise
             </h1>
-            <p></p>
+            <ul class="list-none space-y-1 mb-2">
+              <li class="px-5 text-xl my-3">
+                <h1 class="inline text-3xl font-semibold">$29</h1>
+                / mo
+              </li>
+              <li class="text-sm">30 user included</li>
+              <li class="text-sm">15 GB of storage</li>
+              <li class="text-sm">Phone and email Support</li>
+              <li class="text-sm">Help center access</li>
+            </ul>
+            <input
+              type="button"
+              class="text-white my-3 w-[92%] mx-1 rounded-md border px-2 py-1 bg-blue-500 hover:bg-blue-800"
+              value="Contact us"
+            />
+          </div>
+        </div>
+        <hr class="mx-auto my-10 w-full shadow-md" />
+        <div class="flex justify-between">
+          <div class="w-1/2 mx-16">
+            <h2
+              class="text-xl w-5 h-6 text-white px-1 py-0 rounded-md bg-blue-900"
+            >
+              B
+            </h2>
+            <p class="text-[12px] w-auto text-gray-500">© Company 2017-2018</p>
+          </div>
+          <div class="w-1/4 mx-16">
+            <h2 class="text-xl">Features</h2>
+            <ul class="list-none text-xs text-gray-500">
+              <li>stuffs</li>
+              <li>stuffs</li>
+              <li>stuffs</li>
+              <li>stuffs</li>
+              <li>stuffs</li>
+              <li>stuffs</li>
+            </ul>
+          </div>
+          <div class="w-1/4 mx-16">
+            <h2 class="text-xl">Resources</h2>
+            <ul class="list-none text-xs text-gray-500">
+              <li>stuffs</li>
+              <li>stuffs</li>
+              <li>stuffs</li>
+              <li>stuffs</li>
+            </ul>
+          </div>
+          <div class="w-1/4 mx-16">
+            <h2 class="text-xl">About</h2>
+            <ul class="list-none text-xs text-gray-500">
+              <li>stuffs</li>
+              <li>stuffs</li>
+              <li>stuffs</li>
+              <li>stuffs</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      // Function to toggle the visibility of the list
+      function toggleList() {
+        const myList = document.getElementById("myList");
+
+        // Toggle the display property of the list
+        if (myList.style.display === "none") {
+          myList.style.display = "block"; // Set to 'block' to make it visible
+        } else {
+          myList.style.display = "none"; // Set to 'none' to hide it
+        }
+      }
+    </script>
   </body>
 </html>
