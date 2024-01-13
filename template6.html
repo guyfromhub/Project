@@ -48,35 +48,81 @@
         class="bg-white font-bold text-[#475162] px-8 my-6 py-4 rounded-full text-[18px] shadow-md"
       />
     </div>
+    <!-- Inserting from here -->
     <div
       class="w-full grid grid-cols-1 grid-flow-row gap-3 h-auto pb-20 max-md:grid-cols-1"
     >
-      <div class="mx-auto py-7 max-md:col-span-1">
-        <h1 class="text-4xl font-bold text-[#475162]">
+      <div class="mx-auto py-7 max-md:col-span-1 px-4">
+        <h1 class="text-xl font-bold text-[#475162]">
           <input
-            type="button"
-            class="text-white bg-gray-800 shadow-md rounded-lg px-3 hover:bg-slate-400"
-            id="insertbtn"
-            value="Insert"
+            type="file"
+            name="fileInput"
+            accept=".jpg, .jpeg, .png"
+            class="rounded-lg ml-1 mr-1 my-3 w-72"
           />
           <input
             type="text"
             id="insertName"
-            class="border-2 border-solid border-slate-950 rounded-lg px-3 shadow-md"
+            class="border-2 border-solid border-slate-950 rounded-lg w-96 px-3 shadow-md"
             value=""
             placeholder="Name"
           />
           <input
             type="text"
             id="insertAge"
-            class="border-2 border-solid border-slate-950 rounded-lg px-3 shadow-md"
+            class="border-2 border-solid border-slate-950 rounded-lg w-32 px-3 shadow-md"
             value=""
             placeholder="Age"
           />
+
+          <input
+            type="button"
+            class="text-white bg-gray-800 shadow-md rounded-lg px-3 w-32 hover:bg-slate-400"
+            id="insertbtn"
+            value="Insert"
+          />
+        </h1>
+
+        <!-- Search Is Here -->
+        <h1 class="text-xl group font-bold text-[#475162] text-center">
+          <input
+            type="text"
+            id="searchThis"
+            class="border-2 group-hover:shadow-lg border-solid h-10 border-slate-950 rounded-l-lg w-44 px-3 shadow-md ml-auto mr-0"
+            value=""
+            placeholder="Search here..."
+          />
+          <input
+            type="button"
+            class="text-white h-10 group-hover:shadow-lg bg-gray-800 shadow-md rounded-r-lg ml-[-10px] px-3 w-32 hover:bg-slate-400"
+            id="startSearch"
+            value="Search"
+            onclick=""
+          />
+
+          <select
+            class="text-white h-10 mx-9 group-hover:shadow-lg bg-gray-800 shadow-md rounded-lg px-3 w-32 hover:bg-slate-400"
+            id="sortoptions"
+            onclick=""
+          >
+            <option value="ab" id="sortAscending" onclick="ascending()">
+              a-to-z
+            </option>
+            <option value="ab" id="sortAscending">z-to-a</option>
+          </select>
+          <input
+            type="button"
+            class="text-white h-10 group-hover:shadow-lg bg-gray-800 shadow-md rounded-lg px-3 w-32 hover:bg-slate-400"
+            id="clearFilter"
+            value="Clear Filters"
+            onclick=""
+          />
         </h1>
       </div>
-      <span id="insertHere" class="flex flex-col gap-3">
-        <div
+      <!-- Data  is getting inserted here -->
+      <span id="insertHere" class="grid grid-flow-row grid-cols-3 gap-3">
+        <!-- this is for a example of pre-inserted code -->
+        <!-- <div
           class="bg-gray-300 px-8 py-9 mx-auto w-[350px] rounded-lg h-[350px]"
         >
           <img
@@ -85,7 +131,7 @@
             alt="/sampleImg/113.jpg"
           />
           <h1 class="text-3xl my-4 font-bold text-[#475162]">Priyanshu Das</h1>
-        </div>
+        </div> -->
       </span>
 
       <div
@@ -172,24 +218,207 @@
       const insertbtn = document.getElementById("insertbtn");
       var insertName = document.getElementById("insertName");
       var insertAge = document.getElementById("insertAge");
+      const startSearch = document.getElementById("startSearch");
+      const searchThis = document.getElementById("searchThis");
+      const clearFilter = document.getElementById("clearFilter");
+      const sortAscending = document.getElementById("sortAscending");
+
+      // Array Declaration Profile
       let profile = [
+        {
+          name: "Priyanshu",
+          age: 20,
+          imgsrc: "/sampleImg/1.jpg",
+        },
         {
           name: "John",
           age: 25,
-          imgsrc: "/sampleImg/1.jpg",
+          imgsrc: "/sampleImg/2.jpg",
+        },
+        {
+          name: "John",
+          age: 25,
+          imgsrc: "/sampleImg/2.jpg",
         },
         {
           name: "Alice",
           age: 30,
-          imgsrc: "/sampleImg/1.jpg",
+          imgsrc: "/sampleImg/3.jpg",
         },
         {
           name: "Bob",
           age: 22,
-          imgsrc: "/sampleImg/1.jpg",
+          imgsrc: "/sampleImg/4.jpg",
+        },
+        {
+          name: "Yogesh",
+          age: 45,
+          imgsrc: "/sampleImg/5.jpg",
+        },
+        {
+          name: "Yash",
+          age: 25,
+          imgsrc: "/sampleImg/6.jpg",
+        },
+        {
+          name: "Mihir",
+          age: 30,
+          imgsrc: "/sampleImg/7.jpg",
+        },
+        {
+          name: "Jay",
+          age: 22,
+          imgsrc: "/sampleImg/8.jpg",
+        },
+        {
+          name: "Asif",
+          age: 22,
+          imgsrc: "/sampleImg/9.jpg",
         },
       ];
 
+      // Empty Array Declaration
+      let profileFilter = [
+        {
+          name: null,
+          age: null,
+          imgsrc: "/sampleImg/10.jpg",
+        },
+      ];
+
+      // Sorting Data
+      function ascending() {
+        profileFilter = profile.slice(); // Create a copy of the array before sorting
+        profileFilter.sort((firstItem, secondItem) => {
+          // Compare the names as strings
+          return firstItem.name.localeCompare(secondItem.name);
+        });
+        insertHere.innerHTML = "";
+        searchThis.value = "";
+        // filter value shown here
+        for (let i = 0; i < profileFilter.length; i++) {
+          var newh1 = document.createElement("h1");
+          newh1.innerText = profileFilter[i].name;
+          newh1.innerText += "\n " + profileFilter[i].age;
+          newh1.classList = "text-3xl my-4 mx-auto font-bold text-[#475162]";
+
+          var insertImg = document.createElement("img");
+          insertImg.src = profileFilter[i].imgsrc;
+          insertImg.alt = "/sampleImg/" + [i] + ".jpg";
+          insertImg.classList = "w-32 mx-auto h-32 my-4 rounded-full";
+          console.log([i] + ".jpg");
+
+          var newDiv = document.createElement("div");
+          newDiv.classList =
+            "text-center bg-gray-300 px-8 py-9 mx-auto w-[350px] rounded-lg h-[350px]";
+          newDiv.appendChild(insertImg);
+          newDiv.appendChild(newh1);
+          newDiv.appendChild(newh1);
+          insertHere.appendChild(newDiv);
+
+          console.log(profileFilter);
+        }
+      }
+
+      // Entering array data while page loads.
+      document.addEventListener("DOMContentLoaded", () => {
+        for (let i = 0; i < profile.length; i++) {
+          var newh1 = document.createElement("h1");
+          newh1.innerText = profile[i].name;
+          newh1.innerText += "\n " + profile[i].age;
+          newh1.classList = "text-3xl my-4 mx-auto font-bold text-[#475162]";
+
+          var insertImg = document.createElement("img");
+          insertImg.src = profile[i].imgsrc;
+          insertImg.alt = "/sampleImg/" + [i] + ".jpg";
+          insertImg.classList = "w-32 mx-auto h-32 my-4 rounded-full";
+          console.log([i] + ".jpg");
+
+          var newDiv = document.createElement("div");
+          newDiv.classList =
+            "text-center bg-gray-300 px-8 py-9 mx-auto w-[350px] rounded-lg h-[350px]";
+          newDiv.appendChild(insertImg);
+          newDiv.appendChild(newh1);
+          newDiv.appendChild(newh1);
+          insertHere.appendChild(newDiv);
+          console.log(profile[i].name);
+          console.log(profile[i].age);
+          console.log(profileFilter);
+        }
+      });
+
+      // Cancel button or remove filter/ search.
+      clearFilter.addEventListener("click", () => {
+        if (searchThis.value == "") {
+          insertHere.innerHTML = null;
+          searchThis.value = "";
+          for (let i = 0; i < profile.length; i++) {
+            var newh1 = document.createElement("h1");
+            newh1.innerText = profile[i].name;
+            newh1.innerText += "\n " + profile[i].age;
+            newh1.classList = "text-3xl my-4 mx-auto font-bold text-[#475162]";
+
+            var insertImg = document.createElement("img");
+            insertImg.src = profile[i].imgsrc;
+            insertImg.alt = "/sampleImg/" + [i] + ".jpg";
+            insertImg.classList = "w-32 mx-auto h-32 my-4 rounded-full";
+            console.log([i] + ".jpg");
+
+            var newDiv = document.createElement("div");
+            newDiv.classList =
+              "text-center bg-gray-300 px-8 py-9 mx-auto w-[350px] rounded-lg h-[350px]";
+            newDiv.appendChild(insertImg);
+            newDiv.appendChild(newh1);
+            newDiv.appendChild(newh1);
+            insertHere.appendChild(newDiv);
+            console.log(profile[i].name);
+            console.log(profile[i].age);
+            console.log(profileFilter);
+          }
+        }
+      });
+
+      // Seach in results.
+      startSearch.addEventListener("click", () => {
+        // check if the entered value is number or string.
+        if (searchThis.value !== "") {
+          if (typeof searchThis.value == "number") {
+            (profile1) => profile1.age == searchThis.value;
+          }
+          if (typeof searchThis.value == "string") {
+            profileFilter = profile.filter(
+              (profile1) => profile1.name == searchThis.value
+            );
+          }
+          insertHere.innerHTML = "";
+          searchThis.value = "";
+          // filter value shown here
+          for (let i = 0; i < profileFilter.length; i++) {
+            var newh1 = document.createElement("h1");
+            newh1.innerText = profileFilter[i].name;
+            newh1.innerText += "\n " + profileFilter[i].age;
+            newh1.classList = "text-3xl my-4 mx-auto font-bold text-[#475162]";
+
+            var insertImg = document.createElement("img");
+            insertImg.src = profileFilter[i].imgsrc;
+            insertImg.alt = "/sampleImg/" + [i] + ".jpg";
+            insertImg.classList = "w-32 mx-auto h-32 my-4 rounded-full";
+            console.log([i] + ".jpg");
+
+            var newDiv = document.createElement("div");
+            newDiv.classList =
+              "text-center bg-gray-300 px-8 py-9 mx-auto w-[350px] rounded-lg h-[350px]";
+            newDiv.appendChild(insertImg);
+            newDiv.appendChild(newh1);
+            newDiv.appendChild(newh1);
+            insertHere.appendChild(newDiv);
+            console.log(profileFilter[i].name);
+            console.log(profileFilter[i].age);
+            console.log(profileFilter);
+          }
+        }
+      });
+      // inserting live values
       insertbtn.addEventListener("click", () => {
         if (insertName.value != "" && insertAge.value != "") {
           profile.push({
@@ -199,21 +428,26 @@
           });
           var newh1 = document.createElement("h1");
           newh1.innerText = profile[profile.length - 1].name;
+          newh1.innerText += "\n " + profile[profile.length - 1].age;
           newh1.classList = "text-3xl my-4 mx-auto font-bold text-[#475162]";
+
           var insertImg = document.createElement("img");
           insertImg.src = "/sampleImg/1.jpg";
-          insertImg.classList = "w-32 mx-auto h-32 my-4 rounded-full";
           insertImg.alt = alt = "./sampleImg/113.jpg";
+          insertImg.classList = "w-32 mx-auto h-32 my-4 rounded-full";
+
           var newDiv = document.createElement("div");
           newDiv.classList =
             "text-center bg-gray-300 px-8 py-9 mx-auto w-[350px] rounded-lg h-[350px]";
           newDiv.appendChild(insertImg);
+          newDiv.appendChild(newh1);
           newDiv.appendChild(newh1);
           insertHere.appendChild(newDiv);
           console.log(profile[profile.length - 1].name);
           console.log(profile[profile.length - 1].age);
         }
       });
+      // just to check the value of profile for errors
       console.log(profile);
       // Function to toggle the visibility of the list
       function toggleList() {
