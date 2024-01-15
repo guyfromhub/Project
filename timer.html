@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="">
+    <div class="grid w-full place-content-center px-8 h-[720px]">
+      <div class="flex">
+        <div
+          class="w-32 text-8xl m-4 border-2 border-solid bg-gray-800 text-white h-28 text-center -skew-x-12"
+        >
+          <p id="hrs" class="drop-shadow-3d"></p>
+        </div>
+        <div
+          class="w-32 text-8xl m-4 border-2 border-solid bg-gray-800 text-white h-28 text-center -skew-x-12"
+        >
+          <p id="min" class="drop-shadow-3d"></p>
+        </div>
+        <div
+          class="w-32 text-8xl m-4 border-2 border-solid bg-gray-800 text-white h-28 text-center -skew-x-12"
+        >
+          <p class="drop-shadow-3d" id="sec"></p>
+        </div>
+      </div>
+      <div class="flex">
+        <button
+          class="m-4 border-2 border-solid border-gray-200 bg-transparent hover:bg-slate-400 hover:animate-pulse font-bold shadow-md shadow-white rounded-lg h-auto text-center text-5xl p-2"
+          onclick="start()"
+          id="startBtn"
+        >
+          Start
+        </button>
+        <button
+          class="m-4 border-2 border-solid border-gray-200 bg-transparent hover:bg-slate-400 hover:animate-pulse font-bold shadow-md shadow-white rounded-lg h-auto text-center text-5xl p-2"
+          onclick="stop()"
+          id="stopBtn"
+        >
+          Stop
+        </button>
+        <button
+          class="m-4 border-2 border-solid border-gray-200 bg-transparent hover:bg-slate-400 hover:animate-pulse font-bold shadow-md shadow-white rounded-lg h-auto text-center text-5xl p-2"
+          id="resetBtn"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+    <script>
+      // Listing buttons
+      hrs = document.getElementById("hrs");
+      min = document.getElementById("min");
+      sec = document.getElementById("sec");
+      startBtn = document.getElementById("startBtn");
+      stopBtn = document.getElementById("stopBtn");
+      resetBtn = document.getElementById("resetBtn");
+      min.innerHTML = hrs.innerHTML = sec.innerHTML = 0;
+
+      var seconds = 0,
+        minute = 0,
+        hours = 0;
+      var timer;
+
+      function start() {
+        timer = setInterval(updateTime, 1000);
+        startBtn.disabled = true;
+      }
+
+      function stop() {
+        // Stop timer
+        clearInterval(timer);
+        // Disable to not let accelerate
+        startBtn.disabled = false;
+      }
+
+      resetBtn.addEventListener("click", () => {
+        seconds = hours = minute = 0;
+        clearInterval(timer);
+        min.innerHTML = hrs.innerHTML = sec.innerHTML = 0;
+      });
+
+      // For background
+
+      function updateTime() {
+        if (seconds == 59) {
+          minute += 1;
+          seconds = 0;
+          // Time Update
+          min.innerHTML = minute;
+          if (minute == 59) {
+            hours += 1;
+            minute = 0;
+            hrs.innerHTML = hours;
+          }
+        } else {
+          // Time Update
+          seconds += 1;
+          //   Sending data to th display.
+          sec.innerHTML = seconds;
+          document.body.style.backgroundColor =
+            "rgb(" + hours + "," + minute + "," + seconds + ")";
+        }
+      }
+    </script>
+  </body>
+</html>

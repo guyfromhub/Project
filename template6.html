@@ -102,13 +102,12 @@
 
           <select
             class="text-white h-10 mx-9 group-hover:shadow-lg bg-gray-800 shadow-md rounded-lg px-3 w-32 hover:bg-slate-400"
-            id="sortoptions"
-            onclick=""
+            id="sortOptions"
+            onchange="selectedOption()"
           >
-            <option value="ab" id="sortAscending" onclick="ascending()">
-              a-to-z
-            </option>
-            <option value="ab" id="sortAscending">z-to-a</option>
+            <option value="2" selected>-Select A Option-</option>
+            <option value="sortAscending" id="sortAscending">a-to-z</option>
+            <option value="sortDescending" id="sortDescending">z-to-a</option>
           </select>
           <input
             type="button"
@@ -222,6 +221,7 @@
       const searchThis = document.getElementById("searchThis");
       const clearFilter = document.getElementById("clearFilter");
       const sortAscending = document.getElementById("sortAscending");
+      let sortOptions = document.getElementById("sortOptions");
 
       // Array Declaration Profile
       let profile = [
@@ -286,37 +286,69 @@
         },
       ];
 
-      // Sorting Data
-      function ascending() {
-        profileFilter = profile.slice(); // Create a copy of the array before sorting
-        profileFilter.sort((firstItem, secondItem) => {
-          // Compare the names as strings
-          return firstItem.name.localeCompare(secondItem.name);
-        });
-        insertHere.innerHTML = "";
-        searchThis.value = "";
-        // filter value shown here
-        for (let i = 0; i < profileFilter.length; i++) {
-          var newh1 = document.createElement("h1");
-          newh1.innerText = profileFilter[i].name;
-          newh1.innerText += "\n " + profileFilter[i].age;
-          newh1.classList = "text-3xl my-4 mx-auto font-bold text-[#475162]";
+      function selectedOption() {
+        var sortOptions = document.getElementById("sortOptions").value;
+        if (sortOptions === "sortAscending") {
+          // Create a copy of the array before
+          console.log(profile);
+          profile = [...profile];
+          profile.sort((a, b) => a.name.localeCompare(b.name));
+          insertHere.innerHTML = "";
+          searchThis.value = "";
+          // filter value shown here
+          for (let i = 0; i < profile.length; i++) {
+            var newh1 = document.createElement("h1");
+            newh1.innerText = profile[i].name;
+            newh1.innerText += "\n " + profile[i].age;
+            newh1.classList = "text-3xl my-4 mx-auto font-bold text-[#475162]";
 
-          var insertImg = document.createElement("img");
-          insertImg.src = profileFilter[i].imgsrc;
-          insertImg.alt = "/sampleImg/" + [i] + ".jpg";
-          insertImg.classList = "w-32 mx-auto h-32 my-4 rounded-full";
-          console.log([i] + ".jpg");
+            var insertImg = document.createElement("img");
+            insertImg.src = profile[i].imgsrc;
+            insertImg.alt = "/sampleImg/" + [i] + ".jpg";
+            insertImg.classList = "w-32 mx-auto h-32 my-4 rounded-full";
+            console.log([i] + ".jpg");
 
-          var newDiv = document.createElement("div");
-          newDiv.classList =
-            "text-center bg-gray-300 px-8 py-9 mx-auto w-[350px] rounded-lg h-[350px]";
-          newDiv.appendChild(insertImg);
-          newDiv.appendChild(newh1);
-          newDiv.appendChild(newh1);
-          insertHere.appendChild(newDiv);
+            var newDiv = document.createElement("div");
+            newDiv.classList =
+              "text-center bg-gray-300 px-8 py-9 mx-auto w-[350px] rounded-lg h-[350px]";
+            newDiv.appendChild(insertImg);
+            newDiv.appendChild(newh1);
+            newDiv.appendChild(newh1);
+            insertHere.appendChild(newDiv);
 
-          console.log(profileFilter);
+            console.log(profile);
+          }
+        }
+        if (sortOptions === "sortDescending") {
+          // Create a copy of the array before
+          console.log(profile);
+          profile = [...profile];
+          profile.sort((a, b) => b.name.localeCompare(a.name));
+          insertHere.innerHTML = "";
+          searchThis.value = "";
+          // filter value shown here
+          for (let i = 0; i < profile.length; i++) {
+            var newh1 = document.createElement("h1");
+            newh1.innerText = profile[i].name;
+            newh1.innerText += "\n " + profile[i].age;
+            newh1.classList = "text-3xl my-4 mx-auto font-bold text-[#475162]";
+
+            var insertImg = document.createElement("img");
+            insertImg.src = profile[i].imgsrc;
+            insertImg.alt = "/sampleImg/" + [i] + ".jpg";
+            insertImg.classList = "w-32 mx-auto h-32 my-4 rounded-full";
+            console.log([i] + ".jpg");
+
+            var newDiv = document.createElement("div");
+            newDiv.classList =
+              "text-center bg-gray-300 px-8 py-9 mx-auto w-[350px] rounded-lg h-[350px]";
+            newDiv.appendChild(insertImg);
+            newDiv.appendChild(newh1);
+            newDiv.appendChild(newh1);
+            insertHere.appendChild(newDiv);
+
+            console.log(profile);
+          }
         }
       }
 
