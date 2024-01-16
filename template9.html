@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="w-full h-dvh p-52">
+      <div class="mx-auto w-1/2 flex flex-col bg-gray-300 justify-center p-3">
+        <h1 class="text-4xl">Quiz</h1>
+
+        <p id="questionDisplay"></p>
+        <ol id="optionDisplay" class="py-5"></ol>
+        <div class="w-full flex justify-evenly">
+          <button id="prevQ" class="bg-white p-2"><< Previous</button>
+          <button id="nextQ" class="bg-white p-2">Next >></button>
+        </div>
+      </div>
+    </div>
+    <script>
+      var i = 0;
+      var questionDisplay = document.getElementById("questionDisplay");
+      var optionDisplay = document.getElementById("optionDisplay");
+      var nextQ = document.getElementById("nextQ");
+      var prevQ = document.getElementById("prevQ");
+      var radioButtons = document.getElementsByName("answers");
+      var marks = 0;
+
+      let QuestionArray = [
+        {
+          questions: "What's your name?",
+          option: ["Priyanshu", "2", "3", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+        {
+          questions: "Question2",
+          option: ["1", "2", "3", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+        {
+          questions: "Question3",
+          option: ["1", "2", "3", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+        {
+          questions: "Question4",
+          option: ["1", "2", "Hwlo", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+        {
+          questions: "Question5",
+          option: ["1", "2", "3", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+        {
+          questions: "Question6",
+          option: ["1", "2", "3", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+        {
+          questions: "Question7",
+          option: ["1", "2", "3", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+        {
+          questions: "Question8",
+          option: ["1", "2", "3", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+        {
+          questions: "Question9",
+          option: ["1", "2", "3", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+        {
+          questions: "Question10",
+          option: ["1", "2", "3", "4"],
+          correct: "0",
+          chosenOne: "",
+        },
+      ];
+      document.addEventListener("DOMContentLoaded", () => {
+        i = 0;
+        showQuestions(i);
+      });
+
+      prevQ.addEventListener("click", () => {
+        if (i == 0) {
+          alert("Already the 1st Question");
+        } else {
+          for (var l = 0; l < radioButtons.length; l++) {
+            if (radioButtons[l].checked) {
+              QuestionArray[i].chosenOne = radioButtons[l].value;
+              ++marks;
+            }
+          }
+          i -= 1;
+          optionDisplay.innerHTML = "";
+          questionDisplay.innerHTML = "";
+          showQuestions(i);
+        }
+      });
+
+      nextQ.addEventListener("click", () => {
+        if (i == 9) {
+          // Will Continue Tomorrow
+        } else {
+          for (var l = 0; l < radioButtons.length; l++) {
+            if (radioButtons[l].checked) {
+              QuestionArray[i].chosenOne = radioButtons[l].value;
+            }
+          }
+          i += 1;
+          optionDisplay.innerHTML = "";
+          questionDisplay.innerHTML = "";
+          showQuestions(i);
+        }
+      });
+
+      function showQuestions(a) {
+        questionDisplay.innerHTML = QuestionArray[a].questions;
+        for (let k = 0; k < QuestionArray[a].option.length; k++) {
+          let optionInput = document.createElement("input");
+          let optionList = document.createElement("li");
+
+          optionInput.name = "answers";
+          optionInput.type = "radio";
+          optionInput.id = "ans" + [k];
+          optionInput.value = QuestionArray[a].option[k];
+          optionList.append(optionInput);
+
+          optionList.innerHTML += "     " + QuestionArray[a].option[k];
+          optionDisplay.append(optionList);
+        }
+        if (QuestionArray[i].chosenOne !== "") {
+          for (var l = 0; l < radioButtons.length; l++) {
+            if (radioButtons[l].value == QuestionArray[i].chosenOne) {
+              radioButtons[l].checked = true;
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

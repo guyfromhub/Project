@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-200">
+    <div class="flex flex-col mx-auto w-[50%] pt-44 content-center">
+      <div
+        class="flex flex-col mx-auto w-[80%] bg-white gap-y-3 content-center shadow-lg p-8"
+      >
+        <h1 class="text-center font-semibold text-3xl">Tip Calculator</h1>
+        <p>Enter the bill amount and tip percentage to Calculate the total.</p>
+        <p>Bill amount:</p>
+        <input
+          type="number"
+          id="bill_amount"
+          required
+          class="border border-solid border-black px-2 py-1"
+          placeholder="Amount..."
+        />
+        <p>Tip percentage:</p>
+        <input
+          type="number"
+          min="2"
+          max="100"
+          id="tip_percent"
+          required
+          class="border border-solid border-black px-2 py-1 mb-2"
+          placeholder="%"
+        />
+        <button
+          class="bg-orange-400 font-bold hover:bg-orange-300 rounded-md border border-solid border-black"
+          id="process"
+        >
+          Calculate
+        </button>
+        <span><label for="answer" class="">Total:</label>
+        <h1 id="answer" class="inline font-bold"></h1>
+      </div></span>
+    </div>
+    <script>
+      var bill_amount = document.getElementById("bill_amount");
+      var tip_percent = document.getElementById("tip_percent");
+      var process = document.getElementById("process");
+
+      process.addEventListener("click", () => {
+        if (bill_amount.value !== "" && tip_percent.value !== "") {
+          let answer = calculate(bill_amount.value, tip_percent.value);
+        }
+      });
+
+      function calculate(a, b) {
+        c = eval((b * a) / 100);
+        document.getElementById("answer").innerHTML = c;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-200">
+    <div class="flex flex-col mx-auto w-[50%] pt-44 content-center text-center">
+      <div class="mx-auto bg-white p-8 w-[80%] flex flex-col gap-y-4">
+        <h1 class="text-4xl font-bold">Age Calculator</h1>
+        <p>Enter your date of birth:</p>
+        <input
+          type="date"
+          id="inputDate"
+          class="w-1/2 mx-auto border border-solid border-slate-900 rounded-md px-3"
+        />
+        <button
+          id="showAnswer"
+          class="w-1/2 mx-auto rounded text-white hover:bg-blue-400 bg-blue-500"
+        >
+          Calculate Age
+        </button>
+        <h3 class="" id="answer">Please select date.</h3>
+      </div>
+    </div>
+    <script>
+      var answer = document.getElementById("answer");
+      var showAnswer = document.getElementById("showAnswer");
+      var todayYear = new Date();
+      var ans;
+
+      showAnswer.addEventListener("click", () => {
+        var inputDate = document.getElementById("inputDate");
+        var selected = inputDate.value;
+
+        var selectedDate = new Date(inputDate.value);
+        console.log(selectedDate);
+        console.log(todayYear);
+        ans = todayYear.getFullYear() - selectedDate.getFullYear();
+        if (ans == 0) {
+          answer.innerHTML = "Happy Birthday";
+        } else {
+          answer.innerHTML = eval(
+            todayYear.getFullYear() - selectedDate.getFullYear()
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
