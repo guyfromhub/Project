@@ -11,6 +11,12 @@
       <div class="mx-auto w-1/2 flex flex-col bg-gray-300 justify-center p-3">
         <h1 class="text-4xl">Quiz</h1>
 
+        <div id="" class="w-full bg-white">
+          <div
+            id="progressQ"
+            class="h-5 w-[0%] bg-red-400 text-right px-1 transition-all text-black duration-300 hover:w-[90%]"
+          ></div>
+        </div>
         <p id="questionDisplay"></p>
         <ol id="optionDisplay" class="py-5"></ol>
         <div class="w-full flex justify-evenly">
@@ -18,75 +24,99 @@
           <button id="nextQ" class="bg-white p-2">Next >></button>
         </div>
       </div>
+      <div
+        class="mx-auto w-1/2 flex-col my-3 justify-center hidden p-3"
+        id="quizResults"
+      >
+        <h1 class="font-bold text-3xl">Results</h1>
+        <h3 class="text-2xl" id="resultTxt">here</h3>
+      </div>
     </div>
     <script>
-      var i = 0;
+      var j,
+        i = 0;
       var questionDisplay = document.getElementById("questionDisplay");
       var optionDisplay = document.getElementById("optionDisplay");
       var nextQ = document.getElementById("nextQ");
       var prevQ = document.getElementById("prevQ");
       var radioButtons = document.getElementsByName("answers");
       var marks = 0;
+      var progressQ = document.getElementById("progressQ");
+      var q = "w-[0%]";
+      var quizResults = document.getElementById("quizResults");
+      var resultTxt = document.getElementById("resultTxt");
 
       let QuestionArray = [
         {
-          questions: "What's your name?",
-          option: ["Priyanshu", "2", "3", "4"],
-          correct: "0",
+          questions: "What is the capital of India?",
+          option: ["New Delhi", "Gujarat", "Kolkata", "Punjab"],
+          correct: "New Delhi",
           chosenOne: "",
         },
         {
-          questions: "Question2",
-          option: ["1", "2", "3", "4"],
-          correct: "0",
+          questions:
+            "Which institution operates the currency and credit system in India?",
+          option: [
+            "Ministry of Finance",
+            "Stock exchanges",
+            "Reserve Bank of India",
+            "Government banks",
+          ],
+          correct: "Reserve Bank of India",
           chosenOne: "",
         },
         {
-          questions: "Question3",
-          option: ["1", "2", "3", "4"],
-          correct: "0",
+          questions: "What is the Hindi film industry in India called?",
+          option: ["Tollywood", "Bollywood", "Kollywood", "Nollywood"],
+          correct: "Bollywood",
           chosenOne: "",
         },
         {
-          questions: "Question4",
-          option: ["1", "2", "Hwlo", "4"],
-          correct: "0",
+          questions: "What is India’s smallest state by area?",
+          option: ["Uttar Pradesh", "Kerala", "Puducherry", "Goa"],
+          correct: "Goa",
           chosenOne: "",
         },
         {
-          questions: "Question5",
-          option: ["1", "2", "3", "4"],
-          correct: "0",
+          questions: "Which Indian festival is associated with colors?",
+          option: ["Pongal", "Holi", "Diwali", "Onam"],
+          correct: "Holi",
           chosenOne: "",
         },
         {
-          questions: "Question6",
-          option: ["1", "2", "3", "4"],
-          correct: "0",
+          questions: "Which is India's oldest national park?",
+          option: [
+            "Jim Corbett National Park",
+            "Hemis National Park",
+            "Bor Tiger reserve",
+            "Ranthambhore National Park",
+          ],
+          correct: "Jim Corbett National Park",
           chosenOne: "",
         },
         {
-          questions: "Question7",
-          option: ["1", "2", "3", "4"],
-          correct: "0",
+          questions:
+            "The Victoria Memorial Hall is located in which Indian city?",
+          option: ["Kolkata", "Lucknow", "Jaipur", "Pune"],
+          correct: "Kolkata",
           chosenOne: "",
         },
         {
-          questions: "Question8",
-          option: ["1", "2", "3", "4"],
-          correct: "0",
+          questions: "What body of water lies to the west of India?",
+          option: ["Coral Sea", "Andaman Sea", "Arabian Sea", "Celebes Sea"],
+          correct: "Arabian Sea",
           chosenOne: "",
         },
         {
-          questions: "Question9",
-          option: ["1", "2", "3", "4"],
-          correct: "0",
+          questions: "Which is the national tree of India?",
+          option: ["Banyan", "Neem", "Mango", "Peepal"],
+          correct: "Banyan",
           chosenOne: "",
         },
         {
-          questions: "Question10",
-          option: ["1", "2", "3", "4"],
-          correct: "0",
+          questions: "Who wrote the Ramayana?",
+          option: ["Kalidasa", "Tulsidasa", "Valmiki", "Ved Vyas"],
+          correct: "Valmiki",
           chosenOne: "",
         },
       ];
@@ -99,6 +129,15 @@
         if (i == 0) {
           alert("Already the 1st Question");
         } else {
+          if (prevQ.innerText == "Please Restart") {
+            var closeWindow = confirm("Are our sure you wanna Restart?");
+            console.log(closeWindow);
+            if (closeWindow == true) {
+              location.reload();
+            } else {
+              return;
+            }
+          }
           for (var l = 0; l < radioButtons.length; l++) {
             if (radioButtons[l].checked) {
               QuestionArray[i].chosenOne = radioButtons[l].value;
@@ -108,22 +147,64 @@
           i -= 1;
           optionDisplay.innerHTML = "";
           questionDisplay.innerHTML = "";
+          if (marks !== 0) {
+            marks = 0;
+          }
+          if (i == 8) {
+            nextQ.innerText = "Next >>";
+          }
           showQuestions(i);
         }
       });
 
       nextQ.addEventListener("click", () => {
         if (i == 9) {
-          // Will Continue Tomorrow
-        } else {
+          progressQ.classList.replace("w-[90%]", "w-[100%]");
           for (var l = 0; l < radioButtons.length; l++) {
             if (radioButtons[l].checked) {
               QuestionArray[i].chosenOne = radioButtons[l].value;
             }
           }
+
+          for (let check = 0; check < QuestionArray.length; check++) {
+            if (
+              QuestionArray[check].correct == QuestionArray[check].chosenOne
+            ) {
+              ++marks;
+            }
+            console.log(marks);
+          }
+          quizResults.classList.replace("hidden", "flex");
+
+          if (marks <= 4) {
+            quizResults.classList.add("bg-red-600");
+            resultTxt.innerText = "Try Again, You Failed! " + marks + "/10 ";
+          } else if (marks >= 5 && marks <= 8) {
+            quizResults.classList.add("bg-red-400");
+            resultTxt.innerText = "Try Harder, You get a C! " + marks + "/10 ";
+          } else if (marks == 9) {
+            quizResults.classList.add("bg-emerald-400");
+            resultTxt.innerText = "Good, You get a C! " + marks + "/10 ";
+          } else if (marks == 10) {
+            quizResults.innerText = "Perfect " + marks + "/10 ";
+            quizResults.classList.add("bg-emerald-600");
+          }
+          prevQ.innerText = "Please Restart";
+          nextQ.classList.add("hidden");
+        } else {
+          if (i == 8) {
+            nextQ.innerText = "Submit";
+          }
+          for (var l = 0; l < radioButtons.length; l++) {
+            if (radioButtons[l].checked) {
+              QuestionArray[i].chosenOne = radioButtons[l].value;
+            }
+          }
+
           i += 1;
           optionDisplay.innerHTML = "";
           questionDisplay.innerHTML = "";
+
           showQuestions(i);
         }
       });
@@ -150,6 +231,18 @@
             }
           }
         }
+
+        r = "w-[" + i * 10 + "%]";
+        if (q == "w-[0%]") {
+          r = "w-[" + i * 10 + "%]";
+          progressQ.classList.replace(q, r);
+        } else {
+          progressQ.classList.replace(q, r);
+          console.table(q, r);
+        }
+        q = r;
+        j = i + 1;
+        progressQ.innerHTML = j + "/10";
       }
     </script>
   </body>
